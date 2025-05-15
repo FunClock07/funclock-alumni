@@ -359,14 +359,16 @@ a {
 }
 
 .feature-card {
-  border: 1px solid var(--color-red-100);
-  background-color: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(4px);
-  border-radius: var(--border-radius-lg);
-  padding: 1.5rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  padding: 1.5em 2em;
+  margin-bottom: 2em;
   transition: all 0.3s;
   overflow: hidden;
-  position: relative;
 }
 
 .feature-card:hover {
@@ -388,22 +390,40 @@ a {
 }
 
 .feature-icon-container {
-  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 2;
+  width: 4.5rem;
+  height: 4.5rem;
+  min-width: 4.5rem;
+  min-height: 4.5rem;
   display: flex;
-  height: 5rem; /* 3.5remから5remに変更 */
-  width: 5rem; /* 3.5remから5remに変更 */
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
-  background: linear-gradient(to bottom right, var(--color-red-100), var(--color-red-50));
-  box-shadow: var(--shadow-md);
-  position: relative;
+  background: none;
+  margin-right: 1.5rem;
+}
+
+/* アイコンの帯（ピンク背景）をbefore疑似要素で作成 */
+.feature-icon-container::before {
+  content: "";
+  position: absolute;
+  left: -1.2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 5.5rem;
+  height: 3.2rem;
+  background: #fee2e2;
+  border-radius: 0.7rem;
+  z-index: 1;
 }
 
 .feature-icon {
-  height: 2.5rem; /* 1.75remから2.5remに変更 */
-  width: 2.5rem; /* 1.75remから2.5remに変更 */
-  color: var(--color-red-600);
+  position: relative;
+  z-index: 2;
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: 2.5rem;
+  color: #e94f4f;
 }
 
 .feature-title {
@@ -1416,9 +1436,12 @@ a {
 .feature-icon,
 .growth-icon,
 .business-icon {
-  width: clamp(1.1rem, 4vw, 2rem);
-  height: clamp(1.1rem, 4vw, 2rem);
-  font-size: clamp(1.1rem, 4vw, 2rem);
+  position: relative;
+  z-index: 2;
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: 2.5rem;
+  color: #e94f4f;
 }
 
 .story-badges {
