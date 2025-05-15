@@ -107,10 +107,11 @@ a {
 }
 
 .section-title {
-  font-size: 2rem;
-  font-weight: 700;
-  line-height: 1.2;
-  margin: 1rem 0;
+  font-size: 2.2rem;
+  font-weight: 900;
+  margin-top: 2.5em;
+  margin-bottom: 1.5em;
+  word-break: keep-all;
 }
 
 .section-title-underline {
@@ -1350,20 +1351,12 @@ a {
 
 /* 基本：vwやclampで可変サイズ指定 */
 .hero-title-image {
-  width: 80vw;
-  max-width: 500px;
+  width: 400px;
+  max-width: 100%;
   min-width: 220px;
   height: auto;
   margin: 0 auto;
   display: block;
-}
-
-.section-title {
-  font-size: clamp(1.2rem, 6vw, 2.5rem);
-  font-weight: 900;
-  margin-top: clamp(1.2em, 4vw, 2.5em);
-  margin-bottom: clamp(0.7em, 2vw, 1.5em);
-  word-break: keep-all;
 }
 
 .section-description {
