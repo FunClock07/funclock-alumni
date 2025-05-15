@@ -1357,21 +1357,21 @@ a {
   .business-container,
   .stories-container {
     max-width: 100vw !important;
-    padding: 0 0.5em !important;
+    padding: 0 3vw !important;
     box-sizing: border-box !important;
   }
   .header {
     padding: 0.5em 0 !important;
   }
   .logo-image {
-    height: 2rem !important;
+    height: 1.7rem !important;
     width: auto !important;
   }
   .cta-button,
   .custom-button,
   .custom-button-primary {
-    width: 95vw !important;
-    max-width: 350px !important;
+    width: 94vw !important;
+    max-width: 340px !important;
     font-size: 1rem !important;
     padding: 0.7em 1.2em !important;
     margin: 0.5em auto !important;
@@ -1382,8 +1382,8 @@ a {
   .hero-container {
     flex-direction: column !important;
     align-items: center !important;
-    gap: 1.2em !important;
-    padding: 0 0.5em !important;
+    gap: 1em !important;
+    padding: 0 !important;
   }
   .hero-content {
     max-width: 100% !important;
@@ -1392,22 +1392,23 @@ a {
     text-align: center !important;
   }
   .hero-title-image {
-    max-width: 95vw !important;
+    max-width: 92vw !important;
+    min-width: 180px !important;
     height: auto !important;
     margin: 0 auto !important;
     display: block !important;
   }
   .hero-image-container {
     width: 100% !important;
-    max-width: 95vw !important;
+    max-width: 92vw !important;
     height: auto !important;
     margin: 0 auto 1em auto !important;
   }
   .photo-bg, .photo {
     width: 100% !important;
-    max-width: 95vw !important;
+    max-width: 92vw !important;
     height: auto !important;
-    border-radius: 18px !important;
+    border-radius: 14px !important;
   }
   .hero-badge {
     font-size: 0.95rem !important;
@@ -1418,7 +1419,7 @@ a {
   }
   .hero-description {
     font-size: 1rem !important;
-    margin-bottom: 1.5em !important;
+    margin-bottom: 1.2em !important;
     margin-top: 1em !important;
     line-height: 1.7 !important;
     text-align: center !important;
@@ -1430,38 +1431,56 @@ a {
     width: 100% !important;
   }
   .section-title {
-    font-size: 1.3rem !important;
+    font-size: 1.1rem !important;
     word-break: keep-all !important;
+    margin-top: 1.2em !important;
+    margin-bottom: 0.7em !important;
   }
   .section-description {
     font-size: 1rem !important;
+    margin-bottom: 1em !important;
   }
   .story-name {
-    font-size: 1.1rem !important;
+    font-size: 1.05rem !important;
   }
   .feature-card,
   .growth-item,
   .business-card {
-    max-width: 95vw !important;
+    max-width: 94vw !important;
     width: 100% !important;
-    margin: 0 auto 1.2em auto !important;
+    margin: 0 auto 1em auto !important;
     box-sizing: border-box !important;
+    padding: 0.8em !important;
+    border-radius: 14px !important;
   }
   .feature-icon-container,
   .growth-icon-container,
   .business-icon-container {
-    width: 2.2rem !important;
-    height: 2.2rem !important;
-    min-width: 2.2rem !important;
-    min-height: 2.2rem !important;
-    margin-bottom: 0.7rem !important;
+    width: 1.7rem !important;
+    height: 1.7rem !important;
+    min-width: 1.7rem !important;
+    min-height: 1.7rem !important;
+    margin-bottom: 0.5rem !important;
+    margin-right: 0.7rem !important;
+    flex-shrink: 0 !important;
   }
   .feature-icon,
   .growth-icon,
   .business-icon {
-    width: 1.2rem !important;
-    height: 1.2rem !important;
-    font-size: 1.2rem !important;
+    width: 1.1rem !important;
+    height: 1.1rem !important;
+    font-size: 1.1rem !important;
+  }
+  .feature-title,
+  .growth-title,
+  .business-title {
+    font-size: 1.05rem !important;
+    margin-bottom: 0.5em !important;
+  }
+  .feature-description,
+  .growth-description,
+  .business-description {
+    font-size: 0.95rem !important;
   }
   .story-content,
   .feature-cards,
@@ -1469,12 +1488,12 @@ a {
     flex-direction: column !important;
     display: flex !important;
     align-items: center !important;
-    gap: 1.2em !important;
+    gap: 1em !important;
   }
   .story-image-container,
   .feature-card,
   .business-card {
-    max-width: 95vw !important;
+    max-width: 94vw !important;
     width: 100% !important;
     height: auto !important;
   }
