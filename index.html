@@ -6,72 +6,72 @@
     <title>FunClock - アルムナイ採用プログラム</title>
     <meta name="description" content="あのときご縁がなかったあなたへ。今、FunClockはもう一度会いたいと思っています。">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="mobile.css" media="(max-width: 600px)">
     <link rel="stylesheet" href="style-part2.css">
     <link rel="stylesheet" href="custom-buttons.css">
+    <link rel="stylesheet" href="mobile.css" media="(max-width: 600px)">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Klee+One:wght@400;600&display=swap" rel="stylesheet">
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* アイコンサイズと位置の調整 */
         .feature-icon-container {
-            height: 5rem !important;
-            width: 5rem !important;
-            margin: 0 auto 1.5rem auto !important; /* 中央揃え */
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
+            height: 5rem;
+            width: 5rem;
+            margin: 0 auto 1.5rem auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .feature-icon {
-            height: 2.5rem !important;
-            width: 2.5rem !important;
-            font-size: 2.5rem !important;
+            height: 2.5rem;
+            width: 2.5rem;
+            font-size: 2.5rem;
         }
         
         /* 写真左下のアイコンを非表示 */
         .story-image-badge {
-            display: none !important;
+            display: none;
         }
         
         /* 成長アイテムのアイコンサイズ調整とアニメーション削除 */
         .growth-icon-container {
             width: 25%;
             background: linear-gradient(to bottom right, var(--color-red-100), var(--color-red-50));
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             padding: 1.5rem;
             position: relative;
-            text-align: center !important;
+            text-align: center;
         }
         .growth-icon {
-            height: 6rem !important;
-            width: 6rem !important;
-            font-size: 6rem !important;
-            margin: 0 auto !important;
+            height: 6rem;
+            width: 6rem;
+            font-size: 6rem;
+            margin: 0 auto;
         }
         .growth-icon-pulse {
-            display: none !important; /* アニメーション削除 */
+            display: none; /* アニメーション削除 */
         }
         
         /* 事業領域のアイコンサイズ調整 */
         .business-icon-container {
-            height: 5rem !important;
-            width: 5rem !important;
-            margin: 0 auto 1.5rem auto !important; /* 中央揃え */
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
+            height: 5rem;
+            width: 5rem;
+            margin: 0 auto 1.5rem auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .business-icon {
-            height: 2.5rem !important;
-            width: 2.5rem !important;
-            font-size: 2.5rem !important;
+            height: 2.5rem;
+            width: 2.5rem;
+            font-size: 2.5rem;
         }
         
         /* コードアイコンの位置調整 */
         .fa-code.business-icon {
-            transform: translateX(-2px) !important; /* コードアイコンを左に少し移動 */
+            transform: translateX(-2px); /* コードアイコンを左に少し移動 */
         }
         
         /* 署名スタイル調整 */
@@ -95,159 +95,159 @@
         
         /* ヒーローセクションの完全に新しいスタイル */
         .hero-section {
-            background-color: #fff5f5 !important;
-            padding: 4rem 0 !important;
+            background-color: #fff5f5;
+            padding: 4rem 0;
         }
         .hero-container {
-            display: flex !important;
-            flex-direction: row !important;
-            align-items: flex-start !important;
-            gap: 2rem !important;
-            max-width: 1200px !important;
-            margin: 0 auto !important;
-            padding: 0 1rem !important;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
         }
         .hero-content {
-            flex: 1 !important;
-            padding: 2rem 0 !important;
+            flex: 1;
+            padding: 2rem 0;
         }
         .hero-image-container {
-            flex: 1 !important;
-            position: relative !important;
-            max-width: 500px !important;
-            margin: 0 !important;
+            flex: 1;
+            position: relative;
+            max-width: 500px;
+            margin: 0;
         }
         
         /* アルムナイ採用プログラムバッジ */
         .hero-badge {
-            display: inline-flex !important;
-            align-items: center !important;
-            background-color: white !important;
-            border: 1px solid #ff6b6b !important;
-            border-radius: 50px !important;
-            padding: 0.5rem 1rem !important;
-            margin-bottom: 2rem !important;
-            color: #ff6b6b !important;
-            font-size: 0.875rem !important;
+            display: inline-flex;
+            align-items: center;
+            background-color: white;
+            border: 1px solid #ff6b6b;
+            border-radius: 50px;
+            padding: 0.5rem 1rem;
+            margin-bottom: 2rem;
+            color: #ff6b6b;
+            font-size: 0.875rem;
         }
         
         /* ヒーロータイトルの新しいスタイル - 画像に合わせて */
         .hero-title-container {
-            display: flex !important;
-            flex-direction: column !important;
-            align-items: flex-start !important;
-            margin-bottom: 2rem !important;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-bottom: 2rem;
         }
         
         .hero-title-line {
-            width: 70px !important;
-            height: 1px !important;
-            background-color: #000 !important;
-            margin: 10px 0 !important;
+            width: 70px;
+            height: 1px;
+            background-color: #000;
+            margin: 10px 0;
         }
         
         .hero-title {
-            font-size: 2.5rem !important;
-            line-height: 1.2 !important;
-            font-weight: 700 !important;
-            margin: 0 !important;
-            padding: 0 !important;
+            font-size: 2.5rem;
+            line-height: 1.2;
+            font-weight: 700;
+            margin: 0;
+            padding: 0;
         }
         
         .hero-title-highlight {
-            color: #e11d48 !important;
-            display: block !important;
-            font-size: 2.5rem !important;
-            line-height: 1.2 !important;
-            font-weight: 700 !important;
+            color: #e11d48;
+            display: block;
+            font-size: 2.5rem;
+            line-height: 1.2;
+            font-weight: 700;
         }
         
         .hero-description {
-            margin-bottom: 2rem !important;
-            font-size: 1rem !important;
-            line-height: 1.6 !important;
-            color: #4b5563 !important;
-            max-width: 500px !important;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #4b5563;
+            max-width: 500px;
         }
         
         /* ボタンスタイル */
         .hero-buttons {
-            display: flex !important;
-            gap: 1rem !important;
+            display: flex;
+            gap: 1rem;
         }
         
         .btn-primary {
-            background-color: #e11d48 !important;
-            color: white !important;
-            padding: 0.75rem 1.5rem !important;
-            border-radius: 4px !important;
-            font-weight: 600 !important;
-            text-decoration: none !important;
-            display: inline-flex !important;
-            align-items: center !important;
-            transition: background-color 0.2s !important;
+            background-color: #e11d48;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            transition: background-color 0.2s;
         }
         
         .btn-primary:hover {
-            background-color: #be123c !important;
+            background-color: #be123c;
         }
         
         .btn-primary i {
-            margin-left: 0.5rem !important;
+            margin-left: 0.5rem;
         }
         
         .btn-secondary {
-            background-color: white !important;
-            color: #4b5563 !important;
-            padding: 0.75rem 1.5rem !important;
-            border-radius: 4px !important;
-            font-weight: 600 !important;
-            text-decoration: none !important;
-            border: 1px solid #d1d5db !important;
-            display: inline-flex !important;
-            align-items: center !important;
-            transition: background-color 0.2s, border-color 0.2s !important;
+            background-color: white;
+            color: #4b5563;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+            text-decoration: none;
+            border: 1px solid #d1d5db;
+            display: inline-flex;
+            align-items: center;
+            transition: background-color 0.2s, border-color 0.2s;
         }
         
         .btn-secondary:hover {
-            background-color: #f9fafb !important;
-            border-color: #9ca3af !important;
+            background-color: #f9fafb;
+            border-color: #9ca3af;
         }
         
         /* Join Us バッジ */
         .join-us-badge {
-            position: absolute !important;
-            bottom: -20px !important;
-            right: -20px !important;
-            background-color: #e11d48 !important;
-            color: white !important;
-            border-radius: 50% !important;
-            width: 80px !important;
-            height: 80px !important;
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            font-weight: bold !important;
-            font-size: 1.2rem !important;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            background-color: #e11d48;
+            color: white;
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
         
         /* レスポンシブ調整 */
         @media (max-width: 768px) {
             .hero-container {
-                flex-direction: column !important;
+                flex-direction: column;
             }
             .hero-image-container {
-                order: -1 !important;
-                max-width: 100% !important;
+                order: -1;
+                max-width: 100%;
             }
             .hero-buttons {
-                flex-direction: column !important;
+                flex-direction: column;
             }
         }
 
         .section-title-underline {
-            display: none !important;
+            display: none;
         }
 
         .section-en-title {
@@ -298,47 +298,47 @@
         }
 
         .story-badges {
-            display: flex !important;
-            flex-direction: row !important;
-            align-items: center !important;
-            gap: 0.5em !important;
-            margin-bottom: 0.5em !important;
-            justify-content: flex-start !important;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 0.5em;
+            margin-bottom: 0.5em;
+            justify-content: flex-start;
         }
 
         .badge, .badge-primary, .badge-outline {
-            display: inline-flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            font-size: 0.95rem !important;
-            font-weight: 600 !important;
-            border-radius: 999px !important;
-            padding: 0.25em 1.2em !important;
-            margin-right: 0.5em !important;
-            margin-bottom: 0 !important;
-            letter-spacing: 0.03em !important;
-            vertical-align: middle !important;
-            background: #f3f4f6 !important;
-            color: #888 !important;
-            border: 1px solid #e5e7eb !important;
-            position: static !important;
-            width: auto !important;
-            height: auto !important;
-            box-shadow: none !important;
-            text-align: left !important;
-            white-space: nowrap !important;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border-radius: 999px;
+            padding: 0.25em 1.2em;
+            margin-right: 0.5em;
+            margin-bottom: 0;
+            letter-spacing: 0.03em;
+            vertical-align: middle;
+            background: #f3f4f6;
+            color: #888;
+            border: 1px solid #e5e7eb;
+            position: static;
+            width: auto;
+            height: auto;
+            box-shadow: none;
+            text-align: left;
+            white-space: nowrap;
         }
 
         .badge-primary {
-            background: #fde8e8 !important;
-            color: #e94f4f !important;
-            border: none !important;
+            background: #fde8e8;
+            color: #e94f4f;
+            border: none;
         }
 
         .badge-outline {
-            background: #f3f4f6 !important;
-            color: #888 !important;
-            border: 1px solid #e5e7eb !important;
+            background: #f3f4f6;
+            color: #888;
+            border: 1px solid #e5e7eb;
         }
     </style>
 </head>
