@@ -1,6 +1,7 @@
-body {
-  background: #fff5f5;
-  overflow-x: hidden;
+body,
+html body {
+  background: #fff5f5 !important;
+  overflow-x: hidden !important;
 }
 .container,
 .about-container,
@@ -70,10 +71,11 @@ body {
   flex: 1 1 0%;
   min-width: 0;
 }
-.section-title {
-  font-size: 1.2rem;
-  margin-top: 1.2em;
-  margin-bottom: 0.7em;
+.section-title,
+html .section-title {
+  font-size: 1.2rem !important;
+  margin-top: 1.2em !important;
+  margin-bottom: 0.7em !important;
 }
 .section-description {
   font-size: 1rem;
