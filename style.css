@@ -1350,6 +1350,38 @@ a {
   .hero-title { font-size: 2rem; }
   .hero-title-highlight { font-size: 2.5rem; }
   .hero-title-normal { font-size: 2rem; }
+  .custom-button,
+  .custom-button-primary {
+    font-size: 1rem !important;
+    padding: 0.7em 1.2em !important;
+    width: 90vw !important;
+    max-width: 350px !important;
+    margin: 0 auto !important;
+    display: block !important;
+    box-sizing: border-box !important;
+  }
+  .cta-button {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    margin: 0.5em 0 !important;
+  }
+  .feature-icon-container,
+  .growth-icon-container,
+  .business-icon-container {
+    width: 2.5rem !important;
+    height: 2.5rem !important;
+    min-width: 2.5rem !important;
+    min-height: 2.5rem !important;
+    margin-bottom: 0.7rem !important;
+  }
+  .feature-icon,
+  .growth-icon,
+  .business-icon {
+    width: 1.5rem !important;
+    height: 1.5rem !important;
+    font-size: 1.5rem !important;
+  }
 }
 
 .hero-title-image {
