@@ -1357,14 +1357,14 @@ a {
   .business-container,
   .stories-container {
     max-width: 100vw !important;
-    padding: 0 3vw !important;
+    padding: 0 2vw !important;
     box-sizing: border-box !important;
   }
   .header {
     padding: 0.5em 0 !important;
   }
   .logo-image {
-    height: 1.7rem !important;
+    height: 2rem !important;
     width: auto !important;
   }
   .cta-button,
@@ -1446,23 +1446,34 @@ a {
   .feature-card,
   .growth-item,
   .business-card {
-    max-width: 94vw !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    max-width: 96vw !important;
     width: 100% !important;
-    margin: 0 auto 1em auto !important;
+    margin: 0 auto 1.2em auto !important;
     box-sizing: border-box !important;
-    padding: 0.8em !important;
+    padding: 1em 1em 1em 0.7em !important;
     border-radius: 14px !important;
+    background: #fff !important;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04) !important;
+    gap: 0.7em !important;
   }
   .feature-icon-container,
   .growth-icon-container,
   .business-icon-container {
-    width: 1.7rem !important;
-    height: 1.7rem !important;
-    min-width: 1.7rem !important;
-    min-height: 1.7rem !important;
-    margin-bottom: 0.5rem !important;
+    width: 1.5rem !important;
+    height: 1.5rem !important;
+    min-width: 1.5rem !important;
+    min-height: 1.5rem !important;
+    margin-bottom: 0 !important;
     margin-right: 0.7rem !important;
     flex-shrink: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: #fde8e8 !important;
+    border-radius: 0.5rem !important;
   }
   .feature-icon,
   .growth-icon,
@@ -1476,26 +1487,20 @@ a {
   .business-title {
     font-size: 1.05rem !important;
     margin-bottom: 0.5em !important;
+    margin-top: 0 !important;
+    font-weight: bold !important;
   }
   .feature-description,
   .growth-description,
   .business-description {
     font-size: 0.95rem !important;
+    margin: 0 !important;
   }
-  .story-content,
-  .feature-cards,
-  .business-cards {
-    flex-direction: column !important;
-    display: flex !important;
-    align-items: center !important;
-    gap: 1em !important;
-  }
-  .story-image-container,
-  .feature-card,
-  .business-card {
-    max-width: 94vw !important;
-    width: 100% !important;
-    height: auto !important;
+  .feature-card > div:not(.feature-icon-container),
+  .growth-item > div:not(.growth-icon-container),
+  .business-card > div:not(.business-icon-container) {
+    flex: 1 1 0%;
+    min-width: 0;
   }
   .story-badges {
     flex-direction: column !important;
