@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FunClock - アムルナイ採用プログラム</title>
+    <meta name="description" content="あのときご縁がなかったあなたへ。今、FunClockはもう一度会いたいと思っています。">
+    <!-- フォント -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Klee+One:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <style>
+        /* ベース設定 */
+        :root {
+          --color-red-50: #fef2f2;
+          --color-red-100: #fee2e2;
+          --color-red-200: #fecaca;
+          --color-red-300: #fca5a5;
+          --color-red-400: #f87171;
+          --color-red-500: #ef4444;
+          --color-red-600: #dc2626;
+          --color-red-700: #b91c1c;
+          --color-red-800: #991b1b;
+          --color-red-900: #7f1d1d;
+          
+          --color-white: #ffffff;
+          --color-gray-50: #f9fafb;
+          --color-gray-100: #f3f4f6;
+          --color-gray-200: #e5e7eb;
+          --color-gray-300: #d1d5db;
+          --color-gray-400: #9ca3af;
+          --color-gray-500: #6b7280;
+          --color-gray-600: #4b5563;
+          --color-gray-700: #374151;
+          --color-gray-800: #1f2937;
+          --color-gray-900: #111827;
+          
+          --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+          --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+          --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+          --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+          
+          --border-radius-sm: 0.125rem;
+          --border-radius: 0.25rem;
+          --border-radius-md: 0.375rem;
+          --border-radius-lg: 0.5rem;
+          --border-radius-xl: 0.75rem;
+          --border-radius-2xl: 1rem;
+          --border-radius-full: 9999px;
+          
+          /* グラデーションカラー */
+          --gradient-instagram: linear-gradient(to right, #833ab4, #fd1d1d, #fcb045);
+          --gradient-blog: linear-gradient(to right, #e52d27, #b31217);
+        }
+
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+
+        html {
+          scroll-behavior: smooth;
+        }
+
+        body {
+          font-family: "Inter", sans-serif;
+          line-height: 1.5;
+          font-size: 16px;
+          color: var(--color-gray-900);
+          background: linear-gradient(to bottom, var(--color-white), rgba(254, 226, 226, 0.3));
+        }
+
+        img {
+          max-width: 100%;
+          height: auto;
+        }
+
+        a {
+          color: var(--color-red-600);
+          text-decoration: none;
+          transition: color 0.2s ease;
+        }
+
+        a:hover {
+          color: var(--color-red-700);
+        }
+
+        .container {
+          width: 100%;
+          padding: 0 1rem;
+          margin: 0 auto;
+        }
+
+        .section-padding {
+          padding: 3rem 0;
+        }
+
+        .section-title {
+          font-size: 1.875rem;
+          font-weight: 700;
+          margin-bottom: 1rem;
+          text-align: center;
+          color: var(--color-gray-900);
+        }
+
+        .section-subtitle {
+          font-size: 1rem;
+          color: var(--color-gray-600);
+          text-align: center;
+          margin-bottom: 2rem;
+          max-width: 36rem;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        /* ヘッダー */
+        .header {
+          position: sticky;
+          top: 0;
+          z-index: 40;
+          background-color: rgba(255, 255, 255, 0.9);
+          backdrop-filter: blur(8px);
+          border-bottom: 1px solid var(--color-gray-200);
+        }
+
+        .header-container {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          height: 4rem;
+        }
+
+        .logo-image {
+          height: 2rem;
+          width: auto;
+        }
+
+        /* ナビゲーション（スマホでは非表示） */
+        .main-nav {
+          display: none;
+        }
+
+        /* ヒーローセクション */
+        .hero-section {
+          padding: 2rem 0;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .hero-container {
+          display: flex;
+          flex-direction: column;
+          gap: 2rem;
+        }
+
+        .hero-content {
+          text-align: center;
+        }
+
+        .hero-title {
+          margin-bottom: 1rem;
+        }
+
+        .hero-title-image {
+          max-width: 100%;
+          height: auto;
+        }
+
+        .hero-subtitle {
+          font-size: 1rem;
+          color: var(--color-gray-600);
+          margin-bottom: 1.5rem;
+          line-height: 1.6;
+        }
+
+        .hero-buttons {
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+          align-items: center;
+        }
+
+        .hero-image-container {
+          margin-top: 1.5rem;
+          border-radius: var(--border-radius-lg);
+          overflow: hidden;
+          box-shadow: var(--shadow-lg);
+        }
+
+        .hero-image {
+          width: 100%;
+          height: auto;
+          display: block;
+        }
+
+        /* ボタンスタイル */
+        .custom-button {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.5rem;
+          padding: 0.75rem 1.5rem;
+          font-size: 0.875rem;
+          font-weight: 600;
+          border-radius: var(--border-radius-full);
+          transition: all 0.2s ease;
+          cursor: pointer;
+          text-decoration: none;
+          border: none;
+        }
+
+        .custom-button-primary {
+          background-color: var(--color-red-600);
+          color: var(--color-white);
+          box-shadow: 0 4px 6px rgba(220, 38, 38, 0.25);
+        }
+
+        .custom-button-primary:hover {
+          background-color: var(--color-red-700);
+          color: var(--color-white);
+          box-shadow: 0 6px 8px rgba(220, 38, 38, 0.3);
+          transform: translateY(-2px);
+        }
+
+        .custom-button-secondary {
+          background-color: var(--color-white);
+          color: var(--color-red-600);
+          border: 1px solid var(--color-red-600);
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .custom-button-secondary:hover {
+          background-color: var(--color-red-50);
+          color: var(--color-red-700);
+          box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+          transform: translateY(-2px);
+        }
+
+        .custom-button-large {
+          padding: 1rem 2rem;
+          font-size: 1rem;
+        }
+
+        /* ホバーエフェクト */
+        .custom-button i {
+          transition: transform 0.2s ease;
+        }
+
+        .custom-button:hover i {
+          transform: translateX(4px);
+        }
+
+        /* アムルナイ採用とは */
+        .feature-cards {
+          display: flex;
+          flex-direction: column;
+          gap: 1.5rem;
+        }
+
+        .feature-card {
+          background-color: var(--color-white);
+          border-radius: var(--border-radius-lg);
+          padding: 1.5rem;
+          box-shadow: var(--shadow);
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-icon {
+          width: 3rem;
+          height: 3rem;
+          background-color: var(--color-red-100);
+          color: var(--color-red-600);
+          border-radius: var(--border-radius-full);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 1rem;
+          font-size: 1.25rem;
+        }
+
+        .feature-title {
+          font-size: 1.25rem;
+          font-weight: 600;
+          margin-bottom: 0.75rem;
+          color: var(--color-gray-900);
+        }
+
+        .feature-description {
+          color: var(--color-gray-600);
+          font-size: 0.875rem;
+        }
+
+        /* 再入社した方々の声 */
+        .tabs {
+          margin-top: 2rem;
+        }
+
+        .tab-buttons {
+          display: flex;
+          border-bottom: 1px solid var(--color-gray-200);
+          margin-bottom: 1.5rem;
+        }
+
+        .tab-button {
+          padding: 0.75rem 1rem;
+          background: none;
+          border: none;
+          font-size: 0.875rem;
+          font-weight: 500;
+          color: var(--color-gray-600);
+          cursor: pointer;
+          transition: color 0.2s ease, border-color 0.2s ease;
+          border-bottom: 2px solid transparent;
+        }
+
+        .tab-button.active {
+          color: var(--color-red-600);
+          border-bottom-color: var(--color-red-600);
+        }
+
+        .tab-pane {
+          display: none;
+        }
+
+        .tab-pane.active {
+          display: block;
+        }
+
+        .story-content {
+          display: flex;
+          flex-direction: column;
+          gap: 1.5rem;
+        }
+
+        .story-image {
+          text-align: center;
+        }
+
+        .person-image {
+          width: 10rem;
+          height: 10rem;
+          border-radius: var(--border-radius-full);
+          object-fit: cover;
+          margin-bottom: 1rem;
+          box-shadow: var(--shadow-md);
+        }
+
+        .person-info {
+          margin-bottom: 1rem;
+        }
+
+        .person-name {
+          font-size: 1.25rem;
+          font-weight: 600;
+          margin-bottom: 0.25rem;
+        }
+
+        .person-position {
+          font-size: 0.875rem;
+          color: var(--color-gray-600);
+        }
+
+        .story-section {
+          background-color: var(--color-white);
+          border-radius: var(--border-radius-lg);
+          padding: 1.25rem;
+          margin-bottom: 1rem;
+          box-shadow: var(--shadow);
+        }
+
+        .story-section-title {
+          font-size: 1rem;
+          font-weight: 600;
+          margin-bottom: 0.75rem;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          color: var(--color-red-600);
+        }
+
+        /* FunClockの"今"とこれから */
+        .company-features {
+          display: flex;
+          flex-direction: column;
+          gap: 1.5rem;
+        }
+
+        .company-feature {
+          background-color: var(--color-white);
+          border-radius: var(--border-radius-lg);
+          padding: 1.5rem;
+          box-shadow: var(--shadow);
+        }
+
+        /* 事業領域と特徴 */
+        .business-cards {
+          display: flex;
+          flex-direction: column;
+          gap: 1.5rem;
+          margin-bottom: 2.5rem;
+        }
+
+        .business-card {
+          background-color: var(--color-white);
+          border-radius: var(--border-radius-lg);
+          padding: 1.5rem;
+          box-shadow: var(--shadow);
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .business-icon {
+          width: 3rem;
+          height: 3rem;
+          background-color: var(--color-red-100);
+          color: var(--color-red-600);
+          border-radius: var(--border-radius-full);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 1rem;
+          font-size: 1.25rem;
+        }
+
+        .business-title {
+          font-size: 1.25rem;
+          font-weight: 600;
+          margin-bottom: 0.75rem;
+          color: var(--color-gray-900);
+        }
+
+        .business-description {
+          color: var(--color-gray-600);
+          font-size: 0.875rem;
+        }
+
+        .company-stats {
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+        }
+
+        .stat-card {
+          background-color: var(--color-white);
+          border-radius: var(--border-radius-lg);
+          padding: 1.5rem;
+          box-shadow: var(--shadow);
+          text-align: center;
+        }
+
+        .stat-number {
+          font-size: 2.5rem;
+          font-weight: 700;
+          color: var(--color-red-600);
+          margin-bottom: 0.5rem;
+        }
+
+        .stat-unit {
+          font-size: 1.25rem;
+          font-weight: 500;
+        }
+
+        .stat-description {
+          font-size: 0.875rem;
+          color: var(--color-gray-600);
+        }
+
+        /* あなたへ贈るパーソナルレター */
+        .letter-content {
+          max-width: 36rem;
+          margin: 0 auto;
+        }
+
+        .letter-paper {
+          background-color: var(--color-white);
+          border-radius: var(--border-radius-lg);
+          padding: 2rem;
+          box-shadow: var(--shadow-lg);
+          margin-bottom: 2rem;
+          position: relative;
+        }
+
+        .letter-text {
+          font-family: "Klee One", sans-serif;
+          font-size: 0.9375rem;
+          line-height: 1.8;
+          color: var(--color-gray-800);
+          margin-bottom: 2rem;
+        }
+
+        .letter-signature {
+          text-align: right;
+          font-family: "Klee One", sans-serif;
+          font-weight: 600;
+          color: var(--color-gray-900);
+        }
+
+        .letter-cta {
+          text-align: center;
+        }
+
+        /* CTAセクション */
+        .cta-section {
+          background-color: var(--color-red-50);
+          padding: 3rem 0;
+        }
+
+        .cta-content {
+          text-align: center;
+        }
+
+        .cta-title {
+          font-size: 1.875rem;
+          font-weight: 700;
+          margin-bottom: 1rem;
+          color: var(--color-gray-900);
+        }
+
+        .cta-description {
+          font-size: 1rem;
+          color: var(--color-gray-600);
+          margin-bottom: 2rem;
+          max-width: 36rem;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        /* FAQ */
+        .accordion {
+          margin-top: 2rem;
+        }
+
+        .accordion-item {
+          border-bottom: 1px solid var(--color-gray-200);
+        }
+
+        .accordion-button {
+          width: 100%;
+          background: none;
+          border: none;
+          text-align: left;
+          padding: 1.25rem 0;
+          font-size: 1rem;
+          font-weight: 600;
+          color: var(--color-gray-900);
+          cursor: pointer;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .accordion-button i {
+          transition: transform 0.3s ease;
+        }
+
+        .accordion-button.active i {
+          transform: rotate(180deg);
+        }
+
+        .accordion-content {
+          padding: 0 0 1.25rem 0;
+          display: none;
+        }
+
+        .accordion-content p {
+          color: var(--color-gray-600);
+          font-size: 0.9375rem;
+        }
+
+        /* YouTube動画 */
+        .video-container {
+          position: relative;
+          padding-bottom: 56.25%; /* 16:9 アスペクト比 */
+          height: 0;
+          overflow: hidden;
+          border-radius: var(--border-radius-lg);
+          box-shadow: var(--shadow-lg);
+        }
+
+        .video-container iframe {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+        }
+
+        /* SNSリンク - 新デザイン */
+        .sns-section {
+          background-color: var(--color-red-50);
+          text-align: center;
+          padding: 3rem 0;
+        }
+
+        .sns-links {
+          display: flex;
+          flex-direction: column;
+          gap: 2rem;
+          margin: 0 auto;
+          max-width: 32rem;
+        }
+
+        .sns-link-description {
+          color: var(--color-gray-700);
+          font-size: 0.9375rem;
+          margin-top: 0.75rem;
+          text-align: center;
+        }
+
+        .sns-button {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.75rem;
+          padding: 0.875rem 1.5rem;
+          border-radius: var(--border-radius-full);
+          font-weight: 600;
+          color: var(--color-white);
+          text-decoration: none;
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+          box-shadow: var(--shadow-md);
+          width: 100%;
+        }
+
+        .sns-button:hover {
+          transform: translateY(-2px);
+          box-shadow: var(--shadow-lg);
+        }
+
+        .sns-button-instagram {
+          background: var(--gradient-instagram);
+        }
+
+        .sns-button-blog {
+          background: var(--gradient-blog);
+        }
+
+        /* フッター - 新デザイン */
+        .footer {
+          background-color: var(--color-white);
+          padding: 2rem 0;
+          text-align: center;
+        }
+
+        .footer-content {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 1rem;
+        }
+
+        .footer-logo-image {
+          height: 2rem;
+          width: auto;
+          margin-bottom: 0.5rem;
+        }
+
+        .footer-copyright {
+          font-size: 0.75rem;
+          color: var(--color-gray-500);
+        }
+
+        /* PC版のスタイル（768px以上） */
+        @media (min-width: 768px) {
+          .container {
+            max-width: 1200px;
+            padding: 0 2rem;
+          }
+
+          .section-padding {
+            padding: 5rem 0;
+          }
+
+          .section-title {
+            font-size: 2.5rem;
+          }
+
+          .section-subtitle {
+            font-size: 1.125rem;
+          }
+
+          /* ヘッダー（PC版） */
+          .header-container {
+            height: 5rem;
+          }
+
+          .logo-image {
+            height: 2.5rem;
+          }
+
+          .main-nav {
+            display: flex;
+            flex-direction: row;
+            gap: 2rem;
+          }
+
+          .nav-link {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--color-gray-700);
+            text-decoration: none;
+            transition: color 0.2s;
+          }
+
+          .nav-link:hover {
+            color: var(--color-red-600);
+          }
+
+          /* ヒーローセクション（PC版） */
+          .hero-section {
+            padding: 5rem 0;
+          }
+
+          .hero-container {
+            flex-direction: row;
+            align-items: center;
+          }
+
+          .hero-content {
+            flex: 1;
+            text-align: left;
+          }
+
+          .hero-image-container {
+            flex: 1;
+            margin-top: 0;
+          }
+
+          .hero-subtitle {
+            font-size: 1.125rem;
+          }
+
+          .hero-buttons {
+            flex-direction: row;
+            justify-content: flex-start;
+          }
+
+          /* アムルナイ採用とは（PC版） */
+          .feature-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+          }
+
+          .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+          }
+
+          /* 再入社した方々の声（PC版） */
+          .tab-buttons {
+            justify-content: center;
+          }
+
+          .tab-button {
+            padding: 1rem 2rem;
+            font-size: 1rem;
+          }
+
+          .story-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+            align-items: start;
+          }
+
+          .story-image {
+            text-align: center;
+          }
+
+          .person-image {
+            width: 12rem;
+            height: 12rem;
+          }
+
+          /* FunClockの"今"とこれから（PC版） */
+          .company-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+          }
+
+          /* 事業領域と特徴（PC版） */
+          .business-cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+          }
+
+          .business-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+          }
+
+          .company-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+          }
+
+          /* あなたへ贈るパーソナルレター（PC版） */
+          .letter-paper {
+            padding: 3rem;
+          }
+
+          .letter-text {
+            font-size: 1rem;
+          }
+
+          /* CTAセクション（PC版） */
+          .cta-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 2rem;
+            text-align: left;
+          }
+
+          .cta-button-container {
+            text-align: right;
+          }
+
+          /* FAQ（PC版） */
+          .accordion {
+            max-width: 48rem;
+            margin-left: auto;
+            margin-right: auto;
+          }
+
+          /* SNSリンク（PC版） - 新デザイン */
+          .sns-links {
+            max-width: 36rem;
+          }
+
+          .sns-button {
+            padding: 1rem 2rem;
+            font-size: 1rem;
+          }
+        }
+    </style>
+</head>
+<body>
+    <!-- ヘッダー -->
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo">
+                <a href="https://www.funclock.co.jp/" target="_blank" rel="noopener noreferrer">
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/funclock-logo-6qKVPArs1yeZbR6gViczpwM4Pi3vBT.png" alt="FunClock" class="logo-image">
+                </a>
+            </div>
+            <nav class="main-nav">
+                <a href="#about" class="nav-link">アムルナイ採用とは</a>
+                <a href="#stories" class="nav-link">再入社した方々の声</a>
+                <a href="#company" class="nav-link">会社の今</a>
+                <a href="#business" class="nav-link">事業領域</a>
+                <a href="#letter" class="nav-link">あなたへのレター</a>
+            </nav>
+            <div class="cta-button">
+                <a href="https://s.lmes.jp/landing-qr/2007043693-47Wd0Wl8?uLand=r7Pjwb" target="_blank" rel="noopener noreferrer" class="custom-button custom-button-primary">
+                    カジュアル面談に申し込む
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ヒーローセクション -->
+    <section class="hero-section">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/kokodemata-C3tTwWAc4su40h3RsKdEZPY330TcYY.png" alt="ここで、また出会えたら" class="hero-title-image">
+                </h1>
+                <p class="hero-subtitle">あのときご縁がなかったあなたへ。今、FunClockはもう一度会いたいと思っています。</p>
+                <div class="hero-buttons">
+                    <a href="https://s.lmes.jp/landing-qr/2007043693-47Wd0Wl8?uLand=r7Pjwb" target="_blank" rel="noopener noreferrer" class="custom-button custom-button-primary">
+                        カジュアル面談を予約する
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                    <a href="https://s.lmes.jp/landing-qr/2007043693-47Wd0Wl8?uLand=r7Pjwb" target="_blank" rel="noopener noreferrer" class="custom-button custom-button-secondary">
+                        話を聞いてみる
+                        <i class="fa-solid fa-headphones"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image-container">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/team-photo.png-F28yh64bfoVPwN0jfeLul7MVXVVY9M.jpeg" alt="FunClockチーム" class="hero-image">
+            </div>
+        </div>
+    </section>
+
+    <!-- アムルナイ採用とは -->
+    <section id="about" class="about-section section-padding">
+        <div class="container">
+            <h2 class="section-title">別れた道が、再び交わるとき。</h2>
+            <p class="section-subtitle">アムルナイ採用とは、過去に選考を辞退された方や、ご縁がなかった方を再度迎え入れるプログラムです。</p>
+            
+            <div class="feature-cards">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-handshake"></i>
+                    </div>
+                    <h3 class="feature-title">選択を尊重します</h3>
+                    <p class="feature-description">あのときの選択は正しかったと思います。その経験が今のあなたを作っています。</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <h3 class="feature-title">会社は進化しています</h3>
+                    <p class="feature-description">FunClockも成長し、変わりました。新しいプロジェクト、より良い環境、明確なキャリアパスを用意しています。</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+                    <h3 class="feature-title">相互理解があります</h3>
+                    <p class="feature-description">一度お会いしているからこそ、お互いをより深く理解できます。それが良いスタートになります。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 再入社した方々の声 -->
+    <section id="stories" class="stories-section section-padding">
+        <div class="container">
+            <h2 class="section-title">再入社した方々の声</h2>
+            <p class="section-subtitle">FunClockに戻ってきた先輩たちの体験談をご紹介します。</p>
+            
+            <div class="tabs">
+                <div class="tab-buttons">
+                    <button class="tab-button active" data-tab="tab1">KHさん（28歳）</button>
+                    <button class="tab-button" data-tab="tab2">KSさん（26歳）</button>
+                </div>
+                
+                <div class="tab-content">
+                    <div id="tab1" class="tab-pane active">
+                        <div class="story-content">
+                            <div class="story-image">
+                                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/person-kh-new-U01sOPr8ij27jQqYqCaesxDCkLepA5.png" alt="KHさん" class="person-image">
+                                <div class="person-info">
+                                    <h3 class="person-name">KH</h3>
+                                    <p class="person-position">テストエンジニア / 28歳</p>
+                                </div>
+                            </div>
+                            <div class="story-details">
+                                <div class="story-section">
+                                    <h4 class="story-section-title"><i class="fa-solid fa-door-open"></i> 辞退した理由</h4>
+                                    <p>当時は別の業界に興味があり、IT業界に不安を感じていました。また、自分のスキルに自信がなく、もっと勉強してからと思い辞退しました。</p>
+                                </div>
+                                <div class="story-section">
+                                    <h4 class="story-section-title"><i class="fa-solid fa-rotate-left"></i> 戻ってきた理由</h4>
+                                    <p>前職で行き詰まりを感じた時、FunClockの成長を知り、連絡してみました。面談で会社の変化と自分の成長が合致すると感じ、再応募を決意しました。</p>
+                                </div>
+                                <div class="story-section">
+                                    <h4 class="story-section-title"><i class="fa-solid fa-briefcase"></i> 今の仕事</h4>
+                                    <p>テストエンジニアとして品質保証を担当しています。前職で培った細部への気配りが評価され、チームリーダーも任されるようになりました。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="tab2" class="tab-pane">
+                        <div class="story-content">
+                            <div class="story-image">
+                                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/person-ks-O4rS59zjasOA2RFJjgfpEFgz79yowR.png" alt="KSさん" class="person-image">
+                                <div class="person-info">
+                                    <h3 class="person-name">KS</h3>
+                                    <p class="person-position">プロジェクトマネージャー / 26歳</p>
+                                </div>
+                            </div>
+                            <div class="story-details">
+                                <div class="story-section">
+                                    <h4 class="story-section-title"><i class="fa-solid fa-door-open"></i> 辞退した理由</h4>
+                                    <p>大学院進学を決めていたため、就職を先延ばしにしました。研究に集中したかったのと、もう少し専門性を高めたいと思ったからです。</p>
+                                </div>
+                                <div class="story-section">
+                                    <h4 class="story-section-title"><i class="fa-solid fa-rotate-left"></i> 戻ってきた理由</h4>
+                                    <p>修了後、複数の企業を検討しましたが、学生時代に感じたFunClockの雰囲気が忘れられず、連絡してみたところ、快く面談の機会をいただけました。</p>
+                                </div>
+                                <div class="story-section">
+                                    <h4 class="story-section-title"><i class="fa-solid fa-briefcase"></i> 今の仕事</h4>
+                                    <p>入社2年目でプロジェクトマネージャーに抜擢されました。研究で培った論理的思考と問題解決能力が評価され、若手ながら重要なプロジェクトを任されています。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FunClockの"今"とこれから -->
+    <section id="company" class="company-section section-padding">
+        <div class="container">
+            <h2 class="section-title">FunClockの"今"とこれから</h2>
+            <p class="section-subtitle">あなたが知っているFunClockから、私たちはこう変わりました。</p>
+            
+            <div class="company-features">
+                <div class="company-feature">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-building"></i>
+                    </div>
+                    <h3 class="feature-title">組織の成長と新規プロジェクト</h3>
+                    <p class="feature-description">社員数は前年比30%増加し、新たな大型プロジェクトも複数獲得。特にAI関連の案件が増加しています。</p>
+                </div>
+                
+                <div class="company-feature">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="feature-title">教育体制の進化</h3>
+                    <p class="feature-description">社内勉強会を週1回開催し、外部研修への参加も積極的に支援。メンター制度も導入し、キャリア形成をサポートしています。</p>
+                </div>
+                
+                <div class="company-feature">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-certificate"></i>
+                    </div>
+                    <h3 class="feature-title">資格取得支援の充実</h3>
+                    <p class="feature-description">IT関連資格の取得費用を全額補助。合格者には報奨金制度も。昨年度は社員の65%が何らかの資格を取得しました。</p>
+                </div>
+                
+                <div class="company-feature">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-road"></i>
+                    </div>
+                    <h3 class="feature-title">キャリアパスの明確化</h3>
+                    <p class="feature-description">技術専門職とマネジメント職の2軸でのキャリアパスを整備。半年ごとの面談で将来の方向性を一緒に考えます。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 事業領域と特徴 -->
+    <section id="business" class="business-section section-padding">
+        <div class="container">
+            <h2 class="section-title">事業領域と特徴</h2>
+            <p class="section-subtitle">FunClockの事業と、私たちの特徴をご紹介します。</p>
+            
+            <div class="business-cards">
+                <div class="business-card">
+                    <div class="business-icon">
+                        <i class="fa-solid fa-magnifying-glass-chart"></i>
+                    </div>
+                    <h3 class="business-title">評価・検証</h3>
+                    <p class="business-description">ソフトウェアの品質を保証するテスト業務。自動化テストの導入も積極的に進めています。</p>
+                </div>
+                
+                <div class="business-card">
+                    <div class="business-icon">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+                    <h3 class="business-title">開発</h3>
+                    <p class="business-description">Webアプリケーション、モバイルアプリの設計・開発。最新技術を積極的に取り入れています。</p>
+                </div>
+                
+                <div class="business-card">
+                    <div class="business-icon">
+                        <i class="fa-solid fa-gears"></i>
+                    </div>
+                    <h3 class="business-title">運用・保守</h3>
+                    <p class="business-description">システムの安定稼働を支える運用・保守業務。24時間体制でお客様のビジネスを支えています。</p>
+                </div>
+                
+                <div class="business-card">
+                    <div class="business-icon">
+                        <i class="fa-solid fa-headset"></i>
+                    </div>
+                    <h3 class="business-title">サポート</h3>
+                    <p class="business-description">ユーザーからの問い合わせ対応、トラブルシューティング。顧客満足度98%を誇ります。</p>
+                </div>
+            </div>
+            
+            <div class="company-stats">
+                <div class="stat-card">
+                    <div class="stat-number">26<span class="stat-unit">歳</span></div>
+                    <p class="stat-description">平均年齢</p>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-number">95<span class="stat-unit">%</span></div>
+                    <p class="stat-description">業界未経験者</p>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-number">70<span class="stat-unit">%</span></div>
+                    <p class="stat-description">レクリエーション参加率</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- あなたへ贈るパーソナルレター -->
+    <section id="letter" class="letter-section section-padding">
+        <div class="container">
+            <h2 class="section-title">あなたを、ちゃんと覚えています</h2>
+            
+            <div class="letter-content">
+                <div class="letter-paper">
+                    <p class="letter-text">
+                        あなたとの面接から時間が経ちましたが、あの日のことを覚えています。<br><br>
+                        
+                        あなたの熱意、考え方、そして可能性。<br>
+                        当時はご縁がありませんでしたが、それは「今ではない」というだけで、「永遠にない」わけではありません。<br><br>
+                        
+                        この数年で、FunClockも大きく変わりました。<br>
+                        新しいプロジェクト、より良い環境、そして明確なキャリアパス。<br>
+                        あなたが成長したように、私たちも成長しています。<br><br>
+                        
+                        もし興味があれば、ぜひ一度お話ししませんか？<br>
+                        あなたの「今」を聞かせてください。そして、私たちの「今」もお伝えします。<br><br>
+                        
+                        再会できることを、心から楽しみにしています。
+                    </p>
+                    <div class="letter-signature">
+                        <p>FunClock株式会社<br>代表取締役 三井友也</p>
+                    </div>
+                </div>
+                
+                <div class="letter-cta">
+                    <a href="https://s.lmes.jp/landing-qr/2007043693-47Wd0Wl8?uLand=r7Pjwb" target="_blank" rel="noopener noreferrer" class="custom-button custom-button-primary">
+                        カジュアル面談に申し込む
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTAセクション -->
+    <section class="cta-section section-padding">
+        <div class="container">
+            <div class="cta-content">
+                <div class="cta-text">
+                    <h2 class="cta-title">まずは、お話ししませんか？</h2>
+                    <p class="cta-description">カジュアルな面談から始めましょう。あなたの「今」と私たちの「今」、そして「これから」について。</p>
+                </div>
+                <div class="cta-button-container">
+                    <a href="https://s.lmes.jp/landing-qr/2007043693-47Wd0Wl8?uLand=r7Pjwb" target="_blank" rel="noopener noreferrer" class="custom-button custom-button-large">
+                        カジュアル面談に申し込む
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section section-padding">
+        <div class="container">
+            <h2 class="section-title">よくある質問</h2>
+            
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-button">
+                        今さら応募してもいいのでしょうか？
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <p>はい、ぜひお待ちしています。一度お会いした方だからこそ、お互いの理解が深まり、より良いマッチングができると考えています。時間が経ったことで見えてくる価値もあります。</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <button class="accordion-button">
+                        選考フローは変わりますか？
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <p>アムルナイ採用では、通常の選考フローを一部簡略化しています。まずはカジュアル面談からスタートし、お互いの現状を確認。その後、適性に応じた選考ステップへ進みます。</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <button class="accordion-button">
+                        前回の選考から時間が経っていますが大丈夫ですか？
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <p>もちろんです。むしろ、その間の経験や成長を聞かせていただきたいと思っています。新たな視点や経験は、私たちにとっても大きな価値です。</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <button class="accordion-button">
+                        スキルや経験が足りないと思うのですが…
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <p>FunClockでは、技術的なスキルだけでなく、学習意欲や成長意欲を重視しています。未経験からスタートした社員も多く、充実した研修制度でサポートしています。まずはお気軽にご相談ください。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- YouTube動画 -->
+    <section class="video-section section-padding">
+        <div class="container">
+            <h2 class="section-title">会社紹介動画</h2>
+            <div class="video-container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/BGQ3Ah8RZVo" title="FunClock会社紹介" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- SNSリンク - 新デザイン -->
+    <section class="sns-section section-padding">
+        <div class="container">
+            <div class="sns-links">
+                <div>
+                    <a href="https://www.instagram.com/funclock_official/" target="_blank" rel="noopener noreferrer" class="sns-button sns-button-instagram">
+                        <i class="fa-brands fa-instagram"></i>
+                        FunClock公式Instagramをフォロー
+                    </a>
+                    <p class="sns-link-description">日常の様子や社内イベントなど、FunClockの雰囲気をチェックしてみてください！</p>
+                </div>
+                
+                <div>
+                    <a href="https://blog.funclock.co.jp/" target="_blank" rel="noopener noreferrer" class="sns-button sns-button-blog">
+                        <i class="fa-solid fa-book-open"></i>
+                        FunClock公式ブログを読む
+                    </a>
+                    <p class="sns-link-description">社員の声や技術情報など、FunClockの取り組みについて詳しく知ることができます！</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- フッター - 新デザイン -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/funclock-logo-6qKVPArs1yeZbR6gViczpwM4Pi3vBT.png" alt="FunClock" class="footer-logo-image">
+                </div>
+                <div class="footer-copyright">
+                    <p>© <span id="current-year"></span> FunClock Inc. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 現在の年を表示
+        document.addEventListener('DOMContentLoaded', function() {
+          // 現在の年を取得してフッターに表示
+          const currentYear = new Date().getFullYear();
+          document.getElementById('current-year').textContent = currentYear;
+          
+          // タブ切り替え機能
+          const tabButtons = document.querySelectorAll('.tab-button');
+          const tabPanes = document.querySelectorAll('.tab-pane');
+          
+          tabButtons.forEach(button => {
+            button.addEventListener('click', function() {
+              // アクティブなタブボタンのクラスを削除
+              tabButtons.forEach(btn => btn.classList.remove('active'));
+              // クリックされたタブボタンにアクティブクラスを追加
+              this.classList.add('active');
+              
+              // タブペインを非表示にする
+              tabPanes.forEach(pane => pane.classList.remove('active'));
+              // クリックされたタブに対応するペインを表示
+              const tabId = this.getAttribute('data-tab');
+              document.getElementById(tabId).classList.add('active');
+            });
+          });
+          
+          // アコーディオン機能
+          const accordionButtons = document.querySelectorAll('.accordion-button');
+          
+          accordionButtons.forEach(button => {
+            button.addEventListener('click', function() {
+              // アクティブクラスの切り替え
+              this.classList.toggle('active');
+              
+              // コンテンツの表示/非表示を切り替え
+              const content = this.nextElementSibling;
+              if (content.style.display === 'block') {
+                content.style.display = 'none';
+              } else {
+                content.style.display = 'block';
+              }
+            });
+          });
+          
+          // スムーズスクロール
+          const navLinks = document.querySelectorAll('.nav-link');
+          
+          navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+              e.preventDefault();
+              
+              // ハッシュからターゲット要素を取得
+              const targetId = this.getAttribute('href');
+              const targetElement = document.querySelector(targetId);
+              
+              // ターゲット要素が存在する場合、スムーズにスクロール
+              if (targetElement) {
+                // ヘッダーの高さを取得
+                const headerHeight = document.querySelector('.header').offsetHeight;
+                
+                // ターゲット要素の位置を計算（ヘッダーの高さを考慮）
+                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                
+                // スムーズにスクロール
+                window.scrollTo({
+                  top: targetPosition,
+                  behavior: 'smooth'
+                });
+              }
+            });
+          });
+        });
+    </script>
+</body>
+</html>
